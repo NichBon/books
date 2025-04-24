@@ -1,0 +1,14 @@
+import classes from './BookCard.module.scss';
+
+const BookCard = (bookTitle, bookAuthor, bookImage = 'https://picsum.photos/200', bookDescription) => {
+    return (
+        <article className='container'>
+            <h3>{bookTitle}</h3>
+            <p>{bookAuthor}</p>
+            <img src={bookImage}></img>
+            <p>{bookDescription}</p>
+        </article>
+    )
+}
+
+export default BookCard;
