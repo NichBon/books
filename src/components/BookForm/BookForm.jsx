@@ -6,6 +6,7 @@ function BookForm({ query, setQuery }) {
         e.preventDefault()
         console.log(document.getElementById('searchForm').value)
         setQuery(document.getElementById('searchForm').value)
+        console.log('ran handle submit')
     }
 
     return (

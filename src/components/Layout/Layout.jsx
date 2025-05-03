@@ -1,27 +1,31 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import BookForm from "../BookForm/BookForm";
 import BookResults from "../BookResults/BookResults";
 import Header from "../Header/Header";
 import { getBooks } from "../../services/bookrequest";
 
 function Layout() {
-    const [bookData, setBookData] = useState('')
+    const [bookData, setBookData] = useState([])
     const [fetchStatus, setFetchStatus] = useState('PENDING')
-    const [query, setQuery] = useState('erevis')
+    const [query, setQuery] = useState('react mounting')
+    const noFetchOnMount = useRef(false);
 
     useEffect(() => {
-        setFetchStatus('LOADING')
-        getBooks(query)
-            .then((bookList) => {
-                setBookData(bookList)
-                setFetchStatus('SUCCESS')
-                console.log('in layout', bookList)
-
-            })
-            .catch((e) => {
-                setFetchStatus('FAILED')
-                console.log('error', e)
-            })
+        if (noFetchOnMount.current) {
+            setFetchStatus('LOADING')
+            getBooks(query)
+                .then((bookList) => {
+                    setBookData(bookList)
+                    setFetchStatus('SUCCESS')
+                })
+                .catch((e) => {
+                    setFetchStatus('FAILED')
+                    console.log('error', e)
+                })
+        } else {
+            noFetchOnMount.current = true;
+            console.log('did not fetch on mount')
+        }
     }, [query])
 
     return (
@@ -30,6 +34,9 @@ function Layout() {
             <form>
                 <BookForm query={query} setQuery={setQuery} />
             </form>
+            <div >
+
+            </div>
             {fetchStatus === 'LOADING' && <p>Loading...</p>}
             {fetchStatus === 'FAILED' && (
                 <p style={{ color: 'red' }}>{error.message}</p>
