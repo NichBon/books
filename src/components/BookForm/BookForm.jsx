@@ -1,21 +1,20 @@
 import { useState } from "react";
 
-function BookForm(onSearch) {
-
-    const [query, setQuery] = useState('');
+function BookForm({ query, setQuery }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        onSearch(query)
+        console.log(document.getElementById('searchForm').value)
+        setQuery(document.getElementById('searchForm').value)
     }
 
     return (
         <>
             <h3>Search for a book</h3>
             <input type='text'
-                value={query}
+                id='searchForm'
                 placeholder='Enter search term here' />
-            <button type='submit'>Search</button>
+            <button type='submit' onClick={handleSubmit}>Search</button>
         </>
     )
 }

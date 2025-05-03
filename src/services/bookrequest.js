@@ -3,7 +3,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 
 export const getBooks = async (query) => {
     try {
-        const url = `${BASE_URL}?q=flowers+inauthor:keyes&key=${API_KEY}`
+        const url = `${BASE_URL}?q=${query}&key=${API_KEY}`
         const response = await fetch(url);
         if (!response.ok) {
             throw new Error('Failed to fetch data');
