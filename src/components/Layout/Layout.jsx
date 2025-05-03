@@ -15,7 +15,7 @@ function Layout() {
             .then((bookList) => {
                 setBookData(bookList)
                 setFetchStatus('SUCCESS')
-                console.log(bookList)
+                console.log('in layout', bookList)
 
             })
             .catch((e) => {

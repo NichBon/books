@@ -9,8 +9,20 @@ export const getBooks = async (query) => {
             throw new Error('Failed to fetch data');
         }
         const data = await response.json();
-        console.log(data)
-        return (data.items);
+        console.log(data.items)
+
+        const cleanedData = data.items.map((book) => {
+            return {
+                bookTitle: book.volumeInfo.title ? book.volumeInfo.title : 'Unknown Title',
+                bookAuthor: book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown Author',
+                bookImage: book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://placecats.com/130/200',
+                bookDescription: book.volumeInfo.description ? book.volumeInfo.description : 'Read the book to find out more',
+            }
+        })
+
+        console.log(cleanedData)
+
+        return (cleanedData);
     } catch (error) {
         console.log('Error fetching data', error)
         return [];

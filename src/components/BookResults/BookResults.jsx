@@ -1,16 +1,17 @@
 import BookCard from "../BookCard/BookCard";
 
 const BookResults = ({ bookData }) => {
+    console.log('bookresults', bookData)
     return (
         <>
             {bookData.map((book) => {
                 try {
                     return (
                         <BookCard
-                            bookTitle={book.volumeInfo.title ? book.volumeInfo.title : 'Unknown Title'}
-                            bookAuthor={book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown Author'}
-                            bookImage={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://placecats.com/130/200'}
-                            bookDescription={book.volumeInfo.description ? book.volumeInfo.description : 'Read the book to find out more'}
+                            bookTitle={book.bookTitle}
+                            bookAuthor={book.bookAuthor}
+                            bookImage={book.bookImage}
+                            bookDescription={book.bookDescription}
                         />
                     )
                 } catch (error) {
@@ -33,3 +34,8 @@ export default BookResults;
 
 //'https://placekeanu.com/130/200'
 //'https://placecats.com/130/200'
+
+// bookTitle={book.volumeInfo.title ? book.volumeInfo.title : 'Unknown Title'}
+// bookAuthor={book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown Author'}
+// bookImage={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://placecats.com/130/200'}
+// bookDescription={book.volumeInfo.description ? book.volumeInfo.description : 'Read the book to find out more'}
