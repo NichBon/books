@@ -1,11 +1,12 @@
 import BookCard from "../BookCard/BookCard";
+import classes from "./BookResults.module.scss";
 
 const BookResults = ({ bookData }) => {
 
 
     console.log('bookresults', bookData)
     return (
-        <>
+        <div className={classes.container}>
             {bookData.map((book, index) => {
                 try {
                     return (
@@ -23,7 +24,7 @@ const BookResults = ({ bookData }) => {
 
             })}
 
-        </>
+        </div>
     )
 }
 

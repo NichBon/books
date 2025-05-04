@@ -14,8 +14,8 @@ function Layout() {
         if (noFetchOnMount.current) {
             setFetchStatus('LOADING')
             getBooks(query)
-                .then((bookList) => {
-                    setBookData(bookList)
+                .then((bookDataFromFetch) => {
+                    setBookData(bookDataFromFetch)
                     setFetchStatus('SUCCESS')
                 })
                 .catch((e) => {
@@ -24,7 +24,6 @@ function Layout() {
                 })
         } else {
             noFetchOnMount.current = true;
-            console.log('did not fetch on mount')
         }
     }, [query])
 

@@ -2,7 +2,7 @@ import classes from './BookCard.module.scss';
 
 const BookCard = ({ bookId, bookTitle, bookAuthor, bookImage = 'https://picsum.photos/200', bookDescription }) => {
     return (
-        <article className='container' key={bookId}>
+        <article className={classes.container} key={bookId}>
             <h3>{bookTitle}</h3>
             <p>{bookAuthor}</p>
             <img src={bookImage}></img>
