@@ -1,0 +1,19 @@
+@use "./colors.module.scss" as c;
+@use "./typography.module.scss" as t;
+
+
+
+
+* {
+    margin: 0;
+}
+
+:root {
+    background-color: c.$color1;
+}
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    padding: 10px;
+}

@@ -1,10 +1,27 @@
+@use '../../styling/colors.module.scss' as c;
+@use '../../styling/typography.module.scss' as t;
+@use '../../styling/mixins.module.scss' as m;
+
 .container {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
     padding: 20px;
-    border: 1px solid red;
+    // background-color: c.$color1;
+    // border-top: 3px solid c.$color2;
+
+    @include m.phone {
+        width: 100%;
+    }
+
+    @include m.tablet {
+        width: 90%;
+    }
+
+    @include m.laptop {
+        width: 85%
+    }
 
     .container {
         flex: 1 1 300px; // Flex grow, shrink, and base size

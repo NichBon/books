@@ -1,4 +1,7 @@
 import { useState } from "react";
+import classes from './BookForm.module.scss'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 function BookForm({ query, setQuery }) {
 
@@ -10,13 +13,15 @@ function BookForm({ query, setQuery }) {
     }
 
     return (
-        <>
-            <h3>Search for a book</h3>
-            <input type='text'
-                id='searchForm'
-                placeholder='Enter search term here' />
-            <button type='submit' onClick={handleSubmit}>Search</button>
-        </>
+        <div className={classes.container}>
+            <h2>Search for a book</h2>
+            <form onSubmit={handleSubmit} className={classes.form}>
+                <input type='text'
+                    id='searchForm'
+                    placeholder='Enter search term here' />
+                <button type='submit'><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+            </form>
+        </div>
     )
 }
 

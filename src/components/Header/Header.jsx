@@ -1,9 +1,11 @@
+import classes from "./Header.module.scss"
 
 const Header = () => {
     return (
-        <>
-            <h1>Google Books Previewer</h1>
-        </>
+        <div className={classes.container}>
+            <h1>Book Search</h1>
+            <p>Powered by Google Books API</p>
+        </div>
     )
 }
 
